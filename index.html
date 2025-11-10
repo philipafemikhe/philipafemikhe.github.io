@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+  <style>
+    /* ==== Base Styles ==== */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0078ff, #00c6ff);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 26px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* ==== Theme Toggle ==== */
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ==== Sections ==== */
+    section {
+      padding: 30px;
+    }
+
+    section h2 {
+      color: #0078ff;
+      border-bottom: 2px solid #0078ff;
+      display: inline-block;
+      margin-bottom: 15px;
+      transition: color 0.4s, border-color 0.4s;
+    }
+
+    .about p {
+      line-height: 1.6;
+    }
+
+    /* ==== Skills ==== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      background: #eaf4ff;
+      color: #0078ff;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: #0078ff;
+      color: white;
+    }
+
+    /* ==== Projects ==== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background: #f0f7ff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .project-info {
+      padding: 15px;
+    }
+
+    .project-info h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #0078ff;
+    }
+
+    .project-info p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .project-info a {
+      text-decoration: none;
+      color: #0078ff;
+      font-weight: 600;
+    }
+
+    .project-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==== Contact ==== */
+    .contact a {
+      display: inline-block;
+      margin: 8px;
+      text-decoration: none;
+      color: #0078ff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .contact a:hover {
+      color: #005ec2;
+    }
+
+    /* ==== Download Button ==== */
+    .download-btn {
+      display: inline-block;
+      background: #0078ff;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #005ec2;
+    }
+
+    /* ==== Dark Mode ==== */
+    body.dark {
+      background: #111;
+      color: #f1f1f1;
+    }
+
+    body.dark .container {
+      background: #1e1e1e;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark section h2 {
+      color: #00c6ff;
+      border-color: #00c6ff;
+    }
+
+    body.dark .skill {
+      background: #004b8d;
+      color: #eaf4ff;
+    }
+
+    body.dark .skill:hover {
+      background: #00c6ff;
+      color: #111;
+    }
+
+    body.dark .project-card {
+      background: #222;
+    }
+
+    body.dark .project-info h3 {
+      color: #00c6ff;
+    }
+
+    body.dark .project-info a {
+      color: #00c6ff;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 20px;
+      }
+      header h1 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <button class="theme-toggle" id="themeBtn" title="Toggle Dark Mode">🌙</button>
+      <img src="https://via.placeholder.com/120" alt="Profile Photo" />
+      <h1>Philip Afemikhe</h1>
+      <p>Full Stack Developer | Java • Node.js • Angular</p>
+      <a href="philip_afemikhe_resume.pdf" download class="download-btn">📄 Download CV</a>
+    </header>
+
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        I'm an accomplished Software Engineer with years of professional hands-on experience creating, deploying, and maintaining scalable enterprise desktops and web applications. My background includes a strong understanding of Data Structures and Algorithms, implementing backend and frontend solutions using Java, PHP, NodeJs, Angular, HTML, CSS, Javascript and related technologies.
+      </p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Angular</span>
+        <span class="skill">Java</span>
+        <span class="skill">SQL</span>
+        <span class="skill">PHP and Laravel</span>
+        <span class="skill">Docker</span>
+      </div>
+    </section>
+
+    <!-- ==== PROJECTS SECTION ==== -->
+    <section class="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/400x150" alt="Project 1" />
+          <div class="project-info">
+            <h3>Wave E-commerce</h3>
+            <p>Workforce for Arts, Craft and Creative Industry e-commerce platform</p>
+            <a href="https://thewave.com.ng">View Project →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://via.placeholder.com/400x150" alt="Project 2" />
+          <div class="project-info">
+            <h3>BMAC</h3>
+            <p>BMAC Inventory and Accounting software</p>
+            <a href="https://onebmac.com">View Project →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <img src="https://via.placeholder.com/400x150" alt="Project 3" />
+          <div class="project-info">
+            <h3>Leverage Platform</h3>
+            <p>Responsive business web application for Leverage Platform.</p>
+            <a href="http://www.leverage-platform.com/">View Project →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact</h2>
+      <a href="mailto:afemikhephilip@gmail.com">📧 Email</a>
+      <a href="https:/ /www.linkedin.com/in/afemikhe-philip-9165bb35/" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+      <a href="https://github.com/philipafemikhe" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+    </section>
+  </div>
+
+  <script>
+    // === Theme Toggle ===
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      themeBtn.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+  </script>
+</body>
+</html>
